@@ -1,0 +1,26 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model test {
+  id_tabla     Int      @id @default(autoincrement())
+  uuid         String   @unique @db.VarChar(50)
+  numero       Decimal  @db.Decimal
+  fecha        DateTime @db.Timestamp(6)
+  boolean_test Boolean
+}
+
+model persona {
+  id               Int      @id @default(autoincrement())
+  rut_persona      String   @unique @db.VarChar(12)
+  email            String   @db.VarChar(50)
+  fecha_nacimiento DateTime @db.Timestamp(6)
+  activo           Boolean
+  telefono         Decimal? @db.Decimal(10, 0)
+}

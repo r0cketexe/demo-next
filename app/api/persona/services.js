@@ -4,7 +4,7 @@ export async function getAllPersonas() {
   return lista;
 }
 
-export async function createPersona(rut_persona, email, fecha_nacimiento, activo, telefono) {
+export async function createPersona(rut_persona, email, fecha_nacimiento, activo, telefono,archivo) {
   const result = await prisma.persona.create({
     data: {
       rut_persona: rut_persona,
@@ -12,6 +12,7 @@ export async function createPersona(rut_persona, email, fecha_nacimiento, activo
       fecha_nacimiento: new Date(fecha_nacimiento),
       activo: activo,
       telefono: telefono,
+      archivo:archivo
     }});
   return true;
 }
